@@ -4,7 +4,7 @@ import { defineConfig } from 'vite';
 import EnvironmentPlugin from 'vite-plugin-environment';
 import svgr from 'vite-plugin-svgr';
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/react-shopping-cart/dist/' : '/';
+const BASE_URL = process.env.NODE_ENV === 'production' ? '/react-shopping-cart/' : '/';
 
 // https://vitejs.dev/config/
 export default defineConfig({
