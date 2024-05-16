@@ -2,7 +2,7 @@ import AppLayout from '@components/layout/AppLayout/AppLayout';
 import { OrderConfirmPage, OrderPage } from '@pages/index';
 import { createBrowserRouter } from 'react-router-dom';
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/react-shopping-cart/' : '/';
+const BASE_URL = '/react-shopping-cart/dist/';
 
 const router = createBrowserRouter(
   [
