@@ -6,20 +6,24 @@ const useCheckCartItem = () => {
 
   const [selectedCartItemIds, setSelectedCartItemIds] = useRecoilState(selectedIdsAtom);
 
-  const isChecked = (id: number) => selectedCartItemIds.some((selectedId) => selectedId === id);
+  const isChecked = (id: number) => selectedCartItemIds.has(id);
 
-  const isAllChecked = selectedCartItemIds.length === cartItems.length;
+  const isAllChecked = selectedCartItemIds.size === cartItems.length;
 
-  const onCheckAllCartItems = (checked: boolean) => {
-    const newCheckState = checked ? cartItems.map((cartItem) => cartItem.id) : [];
+  const onCheckAllCartItems = () => {
+    const newCheckState = !isAllChecked ? new Set(cartItems.map((item) => item.id)) : new Set();
 
     setSelectedCartItemIds(newCheckState);
   };
 
-  const onCheckCartItem = (checked: boolean, id: number) => {
-    const newSelectedCartItemIds = checked
-      ? [...selectedCartItemIds, id]
-      : selectedCartItemIds.filter((selectedId) => selectedId !== id);
+  const onCheckCartItem = (id: number) => {
+    const newSelectedCartItemIds = new Set(selectedCartItemIds);
+
+    if (!isChecked(id)) {
+      newSelectedCartItemIds.add(id);
+    } else {
+      newSelectedCartItemIds.delete(id);
+    }
 
     setSelectedCartItemIds(newSelectedCartItemIds);
   };

@@ -1,6 +1,8 @@
 import { UpsideDownExclamation } from '@assets/index';
 import { CartItemCount, CartList, OrderPrice } from '@components/shoppingCart';
+import { PRICE } from '@constants/shippingCart';
 import { cartItemsSelector } from '@recoil/shoppingCart';
+import { formatKoreanCurrency } from '@utils/currency';
 import { useRecoilValue } from 'recoil';
 
 import * as Styled from './ShoppingCardContent.styled';
@@ -11,7 +13,7 @@ const ShoppingCartContent = () => {
   return (
     <>
       {cartItems.length === 0 ? (
-        <div className="fallback">장바구니에 담은 상품이 없습니다.</div>
+        <Styled.Fallback>장바구니에 담은 상품이 없습니다.</Styled.Fallback>
       ) : (
         <>
           <CartItemCount count={cartItems.length} />
@@ -22,7 +24,9 @@ const ShoppingCartContent = () => {
           </div>
           <Styled.CartInfoBanner>
             <UpsideDownExclamation />
-            <span className="label">총 주문 금액이 100,000원 이상일 경우 무료 배송됩니다.</span>
+            <Styled.CartInfoBannerText>
+              총 주문 금액이 {formatKoreanCurrency(PRICE.freeShippingMinAmount)} 이상일 경우 무료 배송됩니다.
+            </Styled.CartInfoBannerText>
           </Styled.CartInfoBanner>
           <OrderPrice />
         </>

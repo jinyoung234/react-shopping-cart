@@ -1,3 +1,4 @@
+import RootErrorBoundary from '@components/common/ErrorBoundary/RootErrorBoundary';
 import AppLayout from '@components/layout/AppLayout/AppLayout';
 import { OrderConfirmPage, OrderPage } from '@pages/index';
 import { createBrowserRouter } from 'react-router-dom';
