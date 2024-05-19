@@ -13,7 +13,11 @@ const router = createBrowserRouter(
       children: [
         {
           path: '/',
-          element: <OrderPage />,
+          element: (
+            <RootErrorBoundary>
+              <OrderPage />
+            </RootErrorBoundary>
+          ),
         },
         {
           path: '/confirm',
