@@ -1,4 +1,4 @@
-import ShoppingCartFetcher, { fetchCartItems } from '@apis/shoppingCart';
+import ShoppingCartFetcher from '@apis/shoppingCart';
 import { BottomButton } from '@components/common';
 import { useSelectedCartItems } from '@hooks/shoppingCart';
 import useOrderCosts from '@hooks/shoppingCart/useOrderCosts';
