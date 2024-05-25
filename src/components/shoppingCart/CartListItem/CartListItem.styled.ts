@@ -2,6 +2,10 @@ import { COLOR } from '@styles/style.constant';
 import styled from 'styled-components';
 
 export const CartListContainer = styled.li`
+<<<<<<< HEAD
+=======
+  width: 100%;
+>>>>>>> 3d22656cc143f32ed4134e5211b3c83a6f84b320
   border-top: 1px solid ${COLOR.borderColor};
   padding-top: 12px;
   margin-top: 12px;
@@ -25,3 +29,12 @@ export const CartItemSelectionGroup = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+<<<<<<< HEAD
+=======
+
+export const CartItemContentWrapper = styled.div`
+  display: flex;
+  gap: 24px;
+  margin-bottom: 12px;
+`;
+>>>>>>> 3d22656cc143f32ed4134e5211b3c83a6f84b320

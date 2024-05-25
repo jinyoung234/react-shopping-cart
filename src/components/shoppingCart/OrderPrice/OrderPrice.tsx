@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { orderCostsSelector } from '@recoil/shoppingCart';
 import { formatKoreanCurrency } from '@utils/index';
 import { useRecoilValue } from 'recoil';
@@ -5,6 +6,20 @@ import { useRecoilValue } from 'recoil';
 import * as Styled from './OrderPrice.styled';
 const OrderPrice = () => {
   const { orderPrice, shippingPrice, totalPrice } = useRecoilValue(orderCostsSelector);
+=======
+import { formatKoreanCurrency } from '@utils/index';
+
+import * as Styled from './OrderPrice.styled';
+
+interface OrderPriceProps {
+  orderPrice: number;
+  shippingPrice: number;
+  discountPrice?: number;
+  totalPrice: number;
+}
+
+const OrderPrice: React.FC<OrderPriceProps> = ({ orderPrice, shippingPrice, discountPrice, totalPrice }) => {
+>>>>>>> 3d22656cc143f32ed4134e5211b3c83a6f84b320
   return (
     <Styled.OrderPrice>
       <Styled.PriceGroup>
@@ -12,6 +27,15 @@ const OrderPrice = () => {
           <span>주문 금액</span>
           <span>{formatKoreanCurrency(orderPrice)}</span>
         </Styled.PriceRow>
+<<<<<<< HEAD
+=======
+        {discountPrice !== undefined && (
+          <Styled.PriceRow>
+            <span>쿠폰 할인 금액</span>
+            <span>{formatKoreanCurrency(discountPrice)}</span>
+          </Styled.PriceRow>
+        )}
+>>>>>>> 3d22656cc143f32ed4134e5211b3c83a6f84b320
         <Styled.PriceRow>
           <span>배송비</span>
           <span>{formatKoreanCurrency(shippingPrice)}</span>

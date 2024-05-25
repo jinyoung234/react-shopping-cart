@@ -37,7 +37,12 @@
       "@apis/*": ["apis/*"],
       "@errors/*": ["errors/*"],
       "@appTypes/*": ["appTypes/*"],
+<<<<<<< HEAD
       "@recoil/*": ["recoil/*"]
+=======
+      "@recoil/*": ["recoil/*"],
+      "@validation/*": ["validation/*"]
+>>>>>>> 3d22656cc143f32ed4134e5211b3c83a6f84b320
     }
   },
 

@@ -20,6 +20,12 @@ export default {
     '^@appTypes/(.*)$': '<rootDir>/src/appTypes/$1',
     '^@errors/(.*)$': '<rootDir>/src/errors/$1',
     '^@recoil/(.*)$': '<rootDir>/src/recoil/$1',
+<<<<<<< HEAD
   },
   testPathIgnorePatterns: ['<rootDir>/__tests__/constants/'],
+=======
+    '^@validation/(.*)$': '<rootDir>/src/validation/$1',
+  },
+  testPathIgnorePatterns: ['<rootDir>/__tests__/constants/', '<rootDir>/__tests__/utils/'],
+>>>>>>> 3d22656cc143f32ed4134e5211b3c83a6f84b320
 };

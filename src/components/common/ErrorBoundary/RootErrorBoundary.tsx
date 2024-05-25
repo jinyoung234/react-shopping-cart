@@ -1,8 +1,14 @@
 import React from 'react';
 
+<<<<<<< HEAD
 import * as Styled from './ErrorFallback/ErrorFallback.styled';
 
 interface ErrorBoundaryProps extends React.PropsWithChildren {}
+=======
+interface ErrorBoundaryProps extends React.PropsWithChildren {
+  fallback: React.ReactNode;
+}
+>>>>>>> 3d22656cc143f32ed4134e5211b3c83a6f84b320
 
 interface ErrorBoundaryType {
   hasError: boolean;
@@ -32,6 +38,7 @@ class RootErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundar
   }
 
   render() {
+<<<<<<< HEAD
     if (this.state.hasError) {
       return (
         <Styled.ErrorFallbackWrapper>
@@ -42,6 +49,10 @@ class RootErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundar
         </Styled.ErrorFallbackWrapper>
       );
     }
+=======
+    if (this.state.hasError) return this.props.fallback;
+
+>>>>>>> 3d22656cc143f32ed4134e5211b3c83a6f84b320
     return this.props.children;
   }
 }
