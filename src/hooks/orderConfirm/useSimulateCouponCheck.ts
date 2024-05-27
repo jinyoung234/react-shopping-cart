@@ -1,17 +1,16 @@
 import { Coupon } from '@appTypes/orderConfirm';
+import { COUPON } from '@constants/orderConfirm';
+import { isApplicabilityCoupon } from '@domain/coupon';
 import { calculateDiscountAmount } from '@domain/discount';
-import { useConfirmCouponApplication } from '@hooks/orderConfirm';
 import { useOrderCosts } from '@hooks/shoppingCart';
 import { selectedItemsSelector } from '@recoil/shoppingCart';
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 const useSimulateCouponCheck = (selectedCouponList: Coupon[]) => {
-  const { shippingPrice, orderPrice } = useOrderCosts();
+  const { shippingPrice, orderPrice, totalPrice } = useOrderCosts();
 
   const selectedCartItems = useRecoilValue(selectedItemsSelector);
-
-  const isApplicabilityCoupon = useConfirmCouponApplication();
 
   const [temporarySelectedCouponList, setTemporarySelectedCouponList] = useState<Coupon[]>(selectedCouponList);
 
@@ -28,7 +27,7 @@ const useSimulateCouponCheck = (selectedCouponList: Coupon[]) => {
         return prevItemList.filter((item) => item.id !== coupon.id);
       }
 
-      if (checked && !isAlreadySelected && prevItemList.length < 2) {
+      if (checked && !isAlreadySelected && prevItemList.length < COUPON.selectLength.max) {
         return [...prevItemList, coupon];
       }
 
@@ -42,8 +41,9 @@ const useSimulateCouponCheck = (selectedCouponList: Coupon[]) => {
   const selectedCount = temporarySelectedCouponList.length;
 
   const isActiveCoupon = (coupon: Coupon) =>
-    (selectedCount < 2 || temporarySelectedCouponList.some((tempCoupon) => tempCoupon.id === coupon.id)) &&
-    isApplicabilityCoupon(coupon);
+    (selectedCount < COUPON.selectLength.max ||
+      temporarySelectedCouponList.some((tempCoupon) => tempCoupon.id === coupon.id)) &&
+    isApplicabilityCoupon({ coupon, selectedCartItems, totalPrice, shippingPrice });
 
   return {
     temporarySelectedCouponList,

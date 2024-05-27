@@ -19,8 +19,3 @@ export const selectedCouponListAtom = atom<Coupon[]>({
   key: 'selectedCouponListAtom',
   default: [],
 });
-
-export const isInaccessibleAreaAtom = atom({
-  key: 'isInaccessibleAreaAtom',
-  default: false,
-});
